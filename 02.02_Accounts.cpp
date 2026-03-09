@@ -3,12 +3,12 @@
 
 struct bank_account
 {
-	int account_number;
+	int account_number{};
 	std::string person_name;
-	float balance;
+	float balance{};
 };
 
-void balance_changes(bank_account& account);
+void balance_changes(bank_account& account, int new_balance);
 
 int main(int argc, char** argv)
 {
@@ -21,17 +21,18 @@ int main(int argc, char** argv)
 	std::cout << "Enter the balance: ";
 	std::cin >> account.balance;
 
-	balance_changes(account);
+	int new_balance{};
+	std::cout << "Enter the new balance: ";
+	std::cin >> new_balance;
+
+	balance_changes(account, new_balance);
 
 	std::cout << "Your account: " << account.person_name << ", " << account.account_number << ", " << account.balance << std::endl;
 
 	return EXIT_SUCCESS;
 }
 
-void balance_changes(bank_account& account)
+void balance_changes(bank_account& account, int new_balance)
 {
-	int new_balance{};
-	std::cout << "Enter the new balance: ";
-	std::cin >> new_balance;
 	account.balance = new_balance;
 }
